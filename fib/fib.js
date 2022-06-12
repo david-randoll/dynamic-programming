@@ -12,5 +12,5 @@ console.log("fib(50): ", fib(50)); //12586269025
 /*
     Time and space complexity:
 
-    See fib.drawio
+    See fib.drawio or fib.png
 */
