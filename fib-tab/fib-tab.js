@@ -1,7 +1,12 @@
 const fib = (n) => {
-    if (n <= 0) return 0;
-    if (n <= 2) return 1;
-    return fib(n - 1) + fib(n - 2);
+    const table = Array(n + 1).fill(0); //indices starts at 0
+    //set base case
+    if (table.length >= 1) table[1] = 1;
+    for (let i = 0; i <= n; i++) {
+        if (table.length > i + 1) table[i + 1] += table[i];
+        if (table.length > i + 2) table[i + 2] += table[i];
+    }
+    return table[n];
 };
 
 console.log("fib(0): ", fib(0)); //0
@@ -15,5 +20,5 @@ console.log("fib(50): ", fib(50)); //12586269025
 /*
     Time and space complexity:
 
-    See fib.drawio or fib.png
+    See fib-tab.drawio
 */
