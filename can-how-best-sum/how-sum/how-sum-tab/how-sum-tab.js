@@ -9,17 +9,20 @@
 */
 
 const howSum = (targetSum, numbers) => {
-    if (targetSum === 0) return [];
-    if (targetSum < 0) return null;
+    const table = Array(targetSum + 1).fill(null);
+    //initialize the base case
+    table[0] = [];
 
-    for (let num of numbers) {
-        const remainder = targetSum - num;
-        const remainderResult = howSum(remainder, numbers);
-        if (remainderResult !== null) {
-            return [...remainderResult, num];
+    for (let i = 0; i <= targetSum; i++) {
+        const current = table[i];
+        if (current === null) continue;
+
+        for (const num of numbers) {
+            if (table.length > i + num) table[i + num] = [...current, num];
         }
     }
-    return null;
+
+    return table[targetSum];
 };
 
 console.log(howSum(7, [2, 3])); //[3, 2, 2]
